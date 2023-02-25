@@ -15,7 +15,19 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return response()->json($clients);
+        $array = [];
+            foreach($clients as $client){
+                $array[] =[
+                    'id' => $client->id,
+                    'name' => $client->name,
+                    'email' => $client->email,
+                    'phone' => $client->phone,
+                    'address' => $client->address,
+                    'services' => $client->services
+                ];
+            }
+
+        return response()->json($array);
     }
 
     /**
@@ -57,7 +69,12 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return response()->json($client);
+        $data = [
+            'message' => 'Client details',
+            'client' => $client,
+            'services' => $client->services
+        ];
+        return response()->json($data);
     }
 
     /**

@@ -31,3 +31,6 @@ Route::post('/services','App\Http\Controllers\ServiceController@store');
 Route::get('/services/{service}','App\Http\Controllers\ServiceController@show');
 Route::put('/services/{service}','App\Http\Controllers\ServiceController@update');
 Route::delete('/services/{service}','App\Http\Controllers\ServiceController@destroy');
+
+//ServicesClient
+Route::post('/clients/service','App\Http\Controllers\ClientController@attach');
